@@ -37,7 +37,7 @@ func putJson(data interface{}) string {
 	}
 	marshal, err := json.Marshal(dogjson)
 	if err != nil {
-		CRITICAL.Print("Error encode json")
+		CRITICAL.Print("Error encoding json")
 		return ""
 	}
 	return string(marshal)
@@ -51,6 +51,7 @@ FOR_SELECT:
 			if !ok {
 				break FOR_SELECT
 			}
+			CRITICAL.Print("LCM Publisher Error")
 			panic(err)
 		}
 	}

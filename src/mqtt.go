@@ -2,7 +2,6 @@ package main
 
 import (
 	MQTT "github.com/eclipse/paho.mqtt.golang"
-	"os"
 )
 
 const (
@@ -32,15 +31,13 @@ func publishMQTT(topic string, payload string) {
 	INFO.Printf("\tmessage: %s\n", payload)
 	token := client.Publish(topic, byte(qos), false, payload)
 	token.Wait()
-	INFO.Print("Publish Finished")
 }
 
 func subscribeMQTT(topic string) {
 	if token := client.Subscribe(topic, byte(qos), func(client MQTT.Client, msg MQTT.Message) {
 		mqttChannel <- [2]string{msg.Topic(), string(msg.Payload())}
 	}); token.Wait() && token.Error() != nil {
-		CRITICAL.Print(token.Error())
-		os.Exit(1)
+		CRITICAL.Fatal(token.Error())
 	}
 	INFO.Printf("Subscribe Topic: %s", topic)
 }
