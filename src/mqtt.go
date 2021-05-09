@@ -14,6 +14,7 @@ var client MQTT.Client
 func MQTTInit() {
 	opts := MQTT.NewClientOptions()
 	opts.AddBroker(broker)
+	opts.SetKeepAlive(30)
 	opts.SetClientID(dogName)
 	opts.SetCleanSession(false)
 	//opts.SetDefaultPublishHandler(func(client MQTT.Client, msg MQTT.Message) {

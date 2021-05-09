@@ -18,11 +18,11 @@ const _ = bits.UintSize
 const robot_control_lcmt_Fingerprint uint64 = 0x1bf19df40f7f6501
 
 type ExlcmRobotControlLcmt struct {
-	ControlMode int32      `control_mode`
-	GaitType    int32      `gait_type`
-	VDes        [3]float32 `v_des`
-	StepHeight  float32    `step_height`
-	RpyDes      [3]float32 `rpy_des`
+	ControlMode int32      `json:"control_mode"`
+	GaitType    int32      `json:"gait_type"`
+	VDes        [3]float32 `json:"v_des"`
+	StepHeight  float32    `json:"step_height"`
+	RpyDes      [3]float32 `json:"rpy_des"`
 }
 
 // Copy creates a deep copy

@@ -24,6 +24,15 @@ type dataImg struct {
 	Image string `json:"image"`
 }
 
+type RespJson struct {
+	DogId      int         `json:"dog_id,omitempty"`
+	Timestamp  int64       `json:"timestamp,omitempty"`
+	ReturnCode int         `json:"return_code,omitempty"`
+	ReturnMsg  string      `json:"return_msg,omitempty"`
+	Type       string      `json:"type,omitempty"`
+	Data       interface{} `json:"data,omitempty"`
+}
+
 func putJson(data interface{}) string {
 	dogjson := &DogJson{
 		DogId:       dogId,
